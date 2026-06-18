@@ -1,129 +1,244 @@
-# 📈 Options Pricing Engine
+# 📈 QuantLab – Options Pricing & Analytics Platform
 
-An interactive quantitative finance toolkit for pricing European options, analyzing risk sensitivities (Greeks), and comparing analytical and simulation-based pricing models through a modern Streamlit dashboard.
+A professional quantitative finance platform for pricing European options, analyzing risk, and visualizing market data.
+
+QuantLab implements multiple pricing models, Greeks, implied volatility estimation, Monte Carlo simulation, and live market data integration through an interactive Streamlit dashboard.
 
 ---
 
 ## Features
 
-### Black-Scholes Pricing
+### Pricing Models
 
-* Analytical pricing of European Call and Put options
-* Input validation
-* Fast closed-form solution
-
-### Monte Carlo Pricing
-
-* Geometric Brownian Motion (GBM) stock price simulation
-* Configurable number of simulations
-* Reproducible simulations using random seeds
-* Convergence analysis support
-
-### Greeks
-
-Computes the five primary option Greeks:
-
-* **Delta (Δ)** – Sensitivity to stock price
-* **Gamma (Γ)** – Rate of change of Delta
-* **Vega (ν)** – Sensitivity to volatility
-* **Theta (Θ)** – Time decay
-* **Rho (ρ)** – Sensitivity to interest rate
-
-### Interactive Dashboard
-
-Built using **Streamlit**, featuring:
-
-* Adjustable market parameters
-* Black-Scholes pricing
-* Monte Carlo pricing
-* Pricing error comparison
-* Greeks display
-* Interactive payoff diagram
-* Monte Carlo convergence visualization
+- Black-Scholes Analytical Model
+- Monte Carlo Simulation
+- Antithetic Variates Monte Carlo
+- Binomial Tree Model
 
 ---
 
-## Project Structure
+### Risk Analytics
+
+- Delta
+- Gamma
+- Vega
+- Theta
+- Rho
+
+---
+
+### Volatility Analytics
+
+- Historical Volatility
+- Implied Volatility (Newton-Raphson)
+- Volatility Smile
+
+---
+
+### Monte Carlo Analytics
+
+- Standard Monte Carlo Pricing
+- Antithetic Variance Reduction
+- Confidence Intervals
+- Standard Error
+- Margin of Error
+- Convergence Visualization
+
+---
+
+### Live Market Data
+
+- Yahoo Finance Integration
+- Live Stock Prices
+- Option Chain Explorer
+- Expiry Selection
+- Strike Selection
+- Bid / Ask Prices
+- Volume
+- Open Interest
+- Market Implied Volatility
+
+---
+
+### Interactive Dashboard
+
+- Streamlit UI
+- Plotly Visualizations
+- Payoff Diagram
+- Monte Carlo Convergence Plot
+- Volatility Smile
+- Pricing Comparison Dashboard
+- Greeks Dashboard
+
+---
+
+# Project Structure
 
 ```
-options-pricing-engine/
+QuantLab/
 
+│
 ├── pricing/
 │   ├── black_scholes.py
 │   ├── monte_carlo.py
+│   ├── binomial.py
 │   ├── greeks.py
-│   └── __init__.py
+│   ├── implied_volatility.py
+│   └── historical_volatility.py
+│
+├── market_data/
+│   ├── yahoo_finance.py
+│   └── option_chain.py
 │
 ├── visualization/
 │   ├── payoff.py
 │   ├── convergence.py
-│   └── __init__.py
+│   └── volatility_smile.py
 │
 ├── tests/
-│   ├── test_black_scholes.py
-│   ├── test_monte_carlo.py
-│   └── test_greeks.py
 │
 ├── streamlit_app.py
+│
 ├── requirements.txt
-├── README.md
-└── LICENSE
+│
+├── LICENSE
+│
+└── README.md
 ```
 
 ---
 
-## Mathematical Models
+# Models Implemented
 
-### Black-Scholes Model
+## Black-Scholes Model
 
-The analytical pricing model assumes:
+Analytical pricing model for European call and put options.
 
-* Geometric Brownian Motion
-* Constant volatility
-* Constant risk-free interest rate
-* European exercise
-* No dividends
-* Frictionless markets
+Implemented:
 
----
-
-### Monte Carlo Simulation
-
-The simulation engine:
-
-* Generates normally distributed random variables
-* Simulates terminal asset prices using GBM
-* Computes discounted expected option payoff
-* Supports convergence analysis
+- Input Validation
+- d₁ / d₂ Computation
+- Call Pricing
+- Put Pricing
 
 ---
 
-### Greeks
+## Monte Carlo Simulation
 
-Risk metrics are calculated directly from the Black-Scholes model using analytical formulas.
+Risk-neutral simulation of stock price paths.
 
----
+Features:
 
-## Technologies Used
-
-* Python
-* NumPy
-* SciPy
-* Plotly
-* Streamlit
-* Pandas
+- Vectorized NumPy Simulation
+- Confidence Intervals
+- Standard Error
+- Running Convergence
+- Antithetic Variance Reduction
 
 ---
 
-## Running the Dashboard
+## Binomial Tree Model
 
-Install the dependencies:
+Discrete-time pricing model using backward induction.
+
+Features:
+
+- Cox-Ross-Rubinstein Tree
+- Risk-Neutral Probabilities
+- Backward Induction
+- European Calls & Puts
+
+---
+
+## Greeks
+
+Implemented analytically from Black-Scholes.
+
+- Delta
+- Gamma
+- Vega
+- Theta
+- Rho
+
+---
+
+## Implied Volatility
+
+Uses Newton-Raphson iteration to recover implied volatility from market option prices.
+
+---
+
+## Historical Volatility
+
+Calculated from historical log returns using Yahoo Finance market data.
+
+---
+
+# Dashboard
+
+The Streamlit dashboard allows users to:
+
+- Select any stock ticker
+- Download live market data
+- Choose expiry and strike
+- Compare pricing models
+- View Greeks
+- Analyze volatility
+- Explore option chains
+- Visualize payoff diagrams
+- Observe Monte Carlo convergence
+
+---
+
+# Technologies Used
+
+- Python
+- NumPy
+- SciPy
+- Pandas
+- Plotly
+- Streamlit
+- yFinance
+
+---
+
+# Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/ashwathrqf/options-pricing-engine.git
+
+cd options-pricing-engine
+```
+
+Create virtual environment
+
+```bash
+python -m venv .venv
+```
+
+Activate
+
+Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+Linux / macOS
+
+```bash
+source .venv/bin/activate
+```
+
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Launch the application:
+Run the application
 
 ```bash
 streamlit run streamlit_app.py
@@ -131,46 +246,82 @@ streamlit run streamlit_app.py
 
 ---
 
-## Current Progress
+# Example
 
-* ✅ Black-Scholes Pricing
-* ✅ Monte Carlo Pricing
-* ✅ Greeks Calculation
-* ✅ Interactive Streamlit Dashboard
-* ✅ Payoff Visualization
-* ✅ Monte Carlo Convergence Visualization
+Input
 
----
+```
+Stock Price = 100
 
-## Planned Features
+Strike Price = 100
 
-* Binomial Tree Pricing
-* Implied Volatility Solver
-* American Option Pricing
-* Asian Options
-* Barrier Options
-* Variance Reduction Techniques
-* Option Price Heatmaps
-* Greeks Sensitivity Plots
-* Live Market Data Integration
-* Portfolio Analytics
+Time = 1 Year
 
----
+Risk-Free Rate = 5%
 
-## Learning Objectives
+Volatility = 20%
+```
 
-This project is designed to strengthen understanding of:
+Output
 
-* Quantitative Finance
-* Option Pricing Theory
-* Numerical Methods
-* Monte Carlo Simulation
-* Financial Risk Analysis
-* Scientific Computing in Python
-* Interactive Data Visualization
+```
+Black-Scholes Price
+
+Monte Carlo Price
+
+Binomial Tree Price
+
+Greeks
+
+Confidence Interval
+
+Historical Volatility
+
+Market Implied Volatility
+```
 
 ---
 
-## License
+# Future Improvements
 
-This project is released under the MIT License.
+- American Option Pricing
+- Asian Options
+- Barrier Options
+- Heston Stochastic Volatility Model
+- Local Volatility Model
+- GPU-Accelerated Monte Carlo
+- Multi-Asset Options
+- Portfolio Greeks
+- Real-Time Market Streaming
+- Volatility Surface
+- SABR Calibration
+
+---
+
+# License
+
+This project is licensed under the MIT License.
+
+---
+
+# Author
+
+**Ashwath R**
+
+B.Tech Mechanical Engineering
+
+Indian Institute of Technology Madras
+
+Interested in Quantitative Finance, Machine Learning, and Scientific Computing.
+
+---
+
+## Preview
+
+Professional options analytics platform featuring:
+
+- Analytical Pricing
+- Numerical Pricing
+- Risk Analytics
+- Live Market Data
+- Interactive Financial Visualizations
