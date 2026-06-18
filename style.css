@@ -1,0 +1,413 @@
+/* ============================================================
+   QuantLab – Dark Terminal Theme
+   JetBrains Mono (data) + Inter (UI labels)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── Root tokens ── */
+:root {
+  --bg-base: #02040A;
+  --bg-card: #0A0F1A;
+  --bg-sidebar: #060A12;
+  --bg-card-hover: #111927;
+
+  --accent-cyan:   #00D4FF;
+  --accent-green:  #00FF9D;
+  --accent-amber:  #FFB547;
+  --accent-red:    #FF4D6D;
+  --accent-purple: #7C3AED;
+
+  --border:        rgba(0, 212, 255, 0.12);
+  --border-bright: rgba(0, 212, 255, 0.35);
+
+  --text-primary:  #E8EDF5;
+  --text-secondary:#8892A4;
+  --text-muted:    #4A5568;
+
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --sans: 'Inter', system-ui, sans-serif;
+
+  --radius: 8px;
+  --radius-lg: 14px;
+}
+
+/* ── Global resets ── */
+html, body, [class*="css"] {
+  font-family: var(--sans) !important;
+  background-color: var(--bg-base) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ── Hide Streamlit chrome ── */
+header {
+    background: transparent !important;
+    height: 0px;
+}
+
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+.stDeployButton { display: none; }
+
+/* ── App background ── */
+.stApp {
+  background: var(--bg-base) !important;
+  background-image:
+    radial-gradient(ellipse 80% 40% at 50% -10%, rgba(0, 212, 255, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 85% 80%, rgba(124, 58, 237, 0.04) 0%, transparent 60%);
+}
+
+/* ── Main content area ── */
+.main .block-container {
+  padding: 2rem 2.5rem 4rem !important;
+  max-width: 1400px !important;
+}
+
+/* ============================================================
+   TITLE & HEADER
+   ============================================================ */
+h1 {
+  font-family: var(--mono) !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  background: linear-gradient(90deg, var(--accent-cyan) 0%, #7EB9FF 50%, var(--accent-green) 100%);
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  margin-bottom: 0 !important;
+}
+
+/* caption under title */
+.stApp > div > div > div > div > div:first-child .stCaption p {
+  font-family: var(--mono) !important;
+  font-size: 0.72rem !important;
+  color: var(--text-muted) !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+/* ── Dividers ── */
+hr {
+  border: none !important;
+  border-top: 1px solid var(--border) !important;
+  margin: 1.25rem 0 !important;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+section[data-testid="stSidebar"] {
+  background: var(--bg-sidebar) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+section[data-testid="stSidebar"] .stMarkdown h2,
+section[data-testid="stSidebar"] .stMarkdown h3 {
+  font-family: var(--mono) !important;
+  font-size: 0.65rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: var(--accent-cyan) !important;
+  margin-top: 1.25rem !important;
+}
+
+/* Sidebar success block (company info) */
+section[data-testid="stSidebar"] .stAlert[data-baseweb="notification"] {
+  background: rgba(0, 255, 157, 0.05) !important;
+  border: 1px solid rgba(0, 255, 157, 0.2) !important;
+  border-radius: var(--radius) !important;
+}
+
+section[data-testid="stSidebar"] .stAlert p,
+section[data-testid="stSidebar"] .stSuccess p {
+  font-family: var(--mono) !important;
+  font-size: 0.78rem !important;
+  color: var(--text-primary) !important;
+  line-height: 1.8 !important;
+}
+
+/* Sidebar inputs */
+section[data-testid="stSidebar"] input,
+section[data-testid="stSidebar"] .stSelectbox > div > div {
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--mono) !important;
+}
+
+section[data-testid="stSidebar"] input:focus {
+  border-color: var(--accent-cyan) !important;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.15) !important;
+}
+
+/* Sidebar labels */
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] .stRadio label {
+  font-family: var(--sans) !important;
+  font-size: 0.78rem !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.stButton > button,
+.stLinkButton > a {
+  background: transparent !important;
+  border: 1px solid var(--border-bright) !important;
+  color: var(--accent-cyan) !important;
+  font-family: var(--mono) !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  border-radius: var(--radius) !important;
+  padding: 0.45rem 1.2rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.stButton > button:hover,
+.stLinkButton > a:hover {
+  background: rgba(0, 212, 255, 0.08) !important;
+  border-color: var(--accent-cyan) !important;
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.2) !important;
+  color: #fff !important;
+}
+
+/* ============================================================
+   TABS
+   ============================================================ */
+.stTabs [data-baseweb="tab-list"] {
+  background: transparent !important;
+  border-bottom: 1px solid var(--border) !important;
+  gap: 0 !important;
+}
+
+.stTabs [data-baseweb="tab"] {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  color: var(--text-muted) !important;
+  font-family: var(--mono) !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.06em !important;
+  padding: 0.75rem 1.25rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+  color: var(--text-primary) !important;
+  background: rgba(0, 212, 255, 0.04) !important;
+}
+
+.stTabs [aria-selected="true"] {
+  color: var(--accent-cyan) !important;
+  border-bottom: 2px solid var(--accent-cyan) !important;
+  background: transparent !important;
+}
+
+/* ============================================================
+   METRIC CARDS
+   ============================================================ */
+[data-testid="stMetric"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 1rem 1.25rem !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+[data-testid="stMetric"]:hover {
+  border-color: var(--border-bright) !important;
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.07) !important;
+}
+
+[data-testid="stMetric"]::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  opacity: 0.4;
+}
+
+[data-testid="stMetricLabel"] p {
+  font-family: var(--sans) !important;
+  font-size: 0.67rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+}
+
+[data-testid="stMetricValue"] {
+  font-family: var(--mono) !important;
+  font-size: 1.35rem !important;
+  font-weight: 600 !important;
+  color: var(--text-primary) !important;
+}
+
+[data-testid="stMetricDelta"] {
+  font-family: var(--mono) !important;
+  font-size: 0.72rem !important;
+}
+
+/* ============================================================
+   SUBHEADERS (section labels)
+   ============================================================ */
+h2 {
+  font-family: var(--mono) !important;
+  font-size: 0.7rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: var(--accent-cyan) !important;
+  padding: 0.35rem 0.75rem !important;
+  border-left: 2px solid var(--accent-cyan) !important;
+  background: rgba(0, 212, 255, 0.04) !important;
+  border-radius: 0 var(--radius) var(--radius) 0 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* ============================================================
+   DATAFRAMES / TABLES
+   ============================================================ */
+[data-testid="stDataFrame"] {
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden !important;
+  background: var(--bg-card) !important;
+}
+
+[data-testid="stDataFrame"] table {
+  font-family: var(--mono) !important;
+  font-size: 0.8rem !important;
+}
+
+[data-testid="stDataFrame"] thead th {
+  background: rgba(0, 212, 255, 0.06) !important;
+  color: var(--accent-cyan) !important;
+  font-size: 0.65rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid var(--border-bright) !important;
+  padding: 0.75rem 1rem !important;
+}
+
+[data-testid="stDataFrame"] tbody td {
+  color: var(--text-primary) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.03) !important;
+  padding: 0.6rem 1rem !important;
+}
+
+[data-testid="stDataFrame"] tbody tr:hover td {
+  background: rgba(0, 212, 255, 0.03) !important;
+}
+
+/* ============================================================
+   ALERTS (info / success / warning)
+   ============================================================ */
+.stSuccess {
+  background: rgba(0, 255, 157, 0.05) !important;
+  border: 1px solid rgba(0, 255, 157, 0.18) !important;
+  border-radius: var(--radius-lg) !important;
+  color: #b0ffe0 !important;
+}
+
+.stInfo {
+  background: rgba(0, 212, 255, 0.05) !important;
+  border: 1px solid rgba(0, 212, 255, 0.18) !important;
+  border-radius: var(--radius-lg) !important;
+  color: #b0ecff !important;
+}
+
+.stSuccess p, .stInfo p {
+  font-family: var(--mono) !important;
+  font-size: 0.78rem !important;
+  line-height: 1.9 !important;
+}
+
+/* ============================================================
+   SLIDERS
+   ============================================================ */
+[data-testid="stSlider"] [data-baseweb="slider"] [role="slider"] {
+  background: var(--accent-cyan) !important;
+  border: 2px solid var(--bg-base) !important;
+  box-shadow: 0 0 8px var(--accent-cyan) !important;
+}
+
+[data-testid="stSlider"] [data-baseweb="slider"] div[class*="Track"] {
+  background: var(--border) !important;
+}
+
+[data-testid="stSlider"] [data-baseweb="slider"] div[class*="InnerTrack"] {
+  background: var(--accent-cyan) !important;
+}
+
+[data-testid="stSlider"] p {
+  font-family: var(--mono) !important;
+  font-size: 0.72rem !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ============================================================
+   SELECTBOX / RADIO
+   ============================================================ */
+[data-testid="stSelectbox"] > div > div,
+[data-testid="stRadio"] > div {
+  background: rgba(255,255,255,0.02) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+}
+
+[data-testid="stRadio"] label span {
+  font-family: var(--mono) !important;
+  font-size: 0.78rem !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ============================================================
+   SPINNER
+   ============================================================ */
+.stSpinner > div {
+  border-top-color: var(--accent-cyan) !important;
+}
+
+/* ============================================================
+   PLOTLY charts – force dark bg
+   ============================================================ */
+.js-plotly-plot .plotly {
+  background: transparent !important;
+}
+
+/* ============================================================
+   FOOTER / CAPTION
+   ============================================================ */
+.stCaption p {
+  font-family: var(--mono) !important;
+  font-size: 0.65rem !important;
+  color: var(--text-muted) !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-cyan); }
